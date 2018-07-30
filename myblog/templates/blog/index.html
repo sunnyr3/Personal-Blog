@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block ogtags %}
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sunny Ruaa" />
+<meta property="og:description" content="Love Math, Love Coding" />
+<meta property="og:image" content="https://www.sunnyruan.anywhere.com/image/profile.png" />
+<meta property="og:url" content="https://www.sunnyruan.pythonanywhere.com/" />
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'dist/css/index.css' %}" >
+{% endblock %}
+
+{% block content %}
+<div class="home_img placeholder" data-large="{% static 'image/profile.png' %}">
+    <img src="{% static 'image/profile.png' %}" class="mainPostImg img-small" alt="profile" >
+    <div class="img_area"></div>
+</div>
+
+<div class="home_title">
+    <h1>Sunny <mark>Ruan</mark></h1>
+    <h2>Love Math, Love Coding</h2>
+</div>
+{% endblock %}
+
+{% block jsblock %}
+<script src="{% static 'index.js' %}"></script>
+<script>
+    window.onload = loadPreImage();
+</script>
+{% endblock %}

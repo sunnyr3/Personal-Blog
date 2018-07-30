@@ -1,0 +1,95 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sunny Ruan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'image/icon.png' %}" />
+
+    {% block title %}
+    <title>Sunny Ruan</title>
+    {% endblock %}
+
+    <!-- meta tags -->
+    <meta property="og:site_name" content="Sunny Ruan" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="title" content="SunnyRuan" />
+    {% block ogtags %}   
+    <meta property="og:type" content="website" />
+    <meta property="og:describtion" content="Love Math, Love Coding" />
+    <meta property="og:image" content="https://www.sunnyruan.pythonanywhere.com/static/image/profile.png" />
+    <meta property="og:url" content="https://www.sunnyruan.pythonanywhere.com/" />
+    {% endblock %} 
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" >   
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'dist/css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'dist/css/text.css' %}" >
+</head>
+
+<body>
+    <div id="wrap">
+        <nav>
+            <menu class="menu ico_menu">
+                <span></span>
+            </menu>
+            <menuitem class="gnb">
+                <ul>
+                    <li><a class="" href="/">HOME</a></li>
+                    <li><a class="" href="/blog">BLOG</a></li>
+                    <li><a class="" href="/project">PROJECT</a></li>
+                    <li><a class="" href="/resume">RESUME</a></li>
+                </ul>
+            </menuitem>
+        </nav>
+        <div id="container">
+            <div id="snb_left_box">
+                <aside class="snb_left">
+                    <h1><a href="/">Sunny Ruan</a></h1>
+                    <div class="contact">
+                        <ul>
+                            <li class="title">EMAIL</li>
+                            <li class="mailto"><a href="mailto:jiaqingr@gmail.com">jiaqingr@gmail.com</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">Find Me On</li>
+                            <ul>
+                                <li ><a class="icon-social-github" href="http://www.github.com/sunnysakura13" target="_blank"></a></li>
+                                <li ><a class="icon-social-linkedin" href="https://www.linkedin.com/in/sunny-ruan-776929139/" target="_blank"></a></li>
+                                <li ><a class="icon-social-facebook" href="https://www.facebook.com/sunny.ruan.984" target="_blank"></a></li>
+                                <li ><a class="icon-social-twitter" href="https://twitter.com/sunnyjqr" target="_blank"></a></li>
+                                <li ><a class="icon-social-instagram" href="https://www.instagram.com/sunny_sakura_/" target="_blank"></a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <main>
+                <div id="main_box">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </main>
+        </div>
+        <p class="copyright">&copy; 2018 Jiaqing (Sunny) Ruan.</p>
+    </div>
+
+    {% block basejsblock %}
+    <!-- UI for base -->
+    <script src="{% static 'src/js/baseUI.js' %}"></script>
+    <!-- end -->
+    
+    <!-- Google analystics -->
+
+    {% endblock %}
+</body>
+</html>
