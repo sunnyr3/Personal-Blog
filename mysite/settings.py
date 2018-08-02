@@ -23,27 +23,34 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z79)lf@k(qxvys2$!0wm5r#5*r7si&glmey@*$wmagyc_oge^h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DJANGO_DEBUG') != 'False'
 
+TEAMPLATE_DEBUG = DEBUG
 
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+    SECRET_KEY = 'sunnyruan'
+else:
+    ALLOWED_HOSTS = ['sunnyruan.pythonanywhere.com']
+    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+    
 # Application definition
-SITE_ID = 1
+SITE_ID = 1 
 INSTALLED_APPS = [
-    'myblog',
-    'axes',
-    'django_nose',
-    'tagging',
-    'sslserver',
-    'imagekit',
-    'simplemde',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django_markdown',
+    'tagging',
+    'myblog',
+    'sslserver',
+    'imagekit',
+    'simplemde'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -74,6 +81,12 @@ TEMPLATES = [
         },
     },
 ]
+
+#Serving Django admin over HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -112,17 +125,33 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Asia/Seoul'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+# site
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Markdown
+MARKDOWN_STYLE = '/static/css/markdown.css'
+MARKDOWN_EXTENSIONS = 'extra', 'codehilite'
+
+
+# Markdown simplemde
+# SIMPLEMDE_OPTIONS = {
+#     'placeholder': 'Write down here..',
+#     'status': False,
+#     'autosave': {
+#         'enabled': True
+#     }
+# }
+
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'image')

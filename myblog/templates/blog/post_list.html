@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+<title>Blog - Sunny Ruan</title>
+{% endblock %}
+
+{% block ogtags %}
+<meta property="og:type"   content="website" />
+<meta property="og:title" content="Blog - Sujin Lee" />
+<meta property="og:description" content="Creative Technologist" />
+<meta property="og:image" content="https://www.sunnyruan.pythonanywhere.com/image/profile2.jpg" />
+<meta property="og:url" content="https://www.sunnyruan.pythonanywhere.com/" />
+{% endblock %}
+{% block stylesheet %}
+<script id="dsq-count-scr" src="//sujinlee.disqus.com/count.js" async></script>
+{% endblock %}
+{% block content %}
+<header class="page_title">
+  <h1>BLOG</h1>
+</header>
+<div id="main_lst">
+  {% if posts %}
+  <ul id="lst_wrap_blog">
+    {% for post in posts %}
+      <li class="blog_ele" onclick="location.href='{% url 'post_detail' slug=post.slug %}';">
+        <header>
+          <div class="detail">
+            <div class="blog_title">
+              <span class="date">{{ post.created_date|date:"M. d. Y" }}</span>                
+              <h2>{{ post.title|truncatechars:50 }}</h2>
+              <h3>{{ post.summary|truncatechars:70 }}</h3> 
+            </div>           
+          </div>
+          <footer>
+          <span class="icon-heart"></span>
+          <data>{{ post.likes }}</data>
+          </footer>
+        </header>
+        <picture>
+          <div class="placeholder" data-large="{{ post.image.url }}">
+            <img src="{{ post.image_thumbnail.url }}" class="img-small">
+            <div class="img_area"></div>
+          </div>
+        </picture>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div id="main_content">
+    <h3>No Post in here. Write new post!</h3>
+  </div>
+  {% endif %}
+</div>
+  {% if user.is_authenticated %}
+  <a href="{% url 'post_new' %}"><button class="btn_write material-icons">add</button></a>
+  {% endif %}
+{% endblock content %}
+
+{% block jsblock %}
+<script>window.onload = loadPreImage();</script>
+{% endblock %}

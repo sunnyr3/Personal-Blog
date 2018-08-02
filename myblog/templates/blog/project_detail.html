@@ -1,0 +1,113 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block title %}
+<title>{{ project.title }}</title>
+{% endblock %}
+
+{% block ogtags %}
+<meta property="og:type"   content="article" /> 
+<meta property="og:title" content="{{ project.title }}" />
+<meta property="og:description" content="{{ project.summary|truncatechars:230 }}" />
+<meta property="og:image" content="https://www.sunnyruan.pythonanywhere.com/{{ project.image.url }}" />
+<meta property="og:url" content="https://www.sunnyruan.pythonanywhere.com/blog/{{project.slug }}/" />
+{% endblock %}
+
+{% block content %}
+<header class="page_title">
+  <a href="/project"><button class="btn_back material-icons">keyboard_backspace</button></a>
+  <h1>Project</h1>
+</header>
+
+<article>
+  <picture>
+    <div class="thumbnail placeholder" data-large="{{ project.image.url }}">
+      <img src="{{ project.image_thumbnail.url }}" class="mainPostImg img-small">
+      <div class="img_area"></div>
+    </div>
+  </picture>
+  <header class="post_title">
+    <h1>{{ project.title }}</h1>
+    {% if project.created_date %}
+    <span class="date">
+    {{ project.created_date|date:"M. d. Y" }}
+    </span>
+  </header>
+  {% endif %}
+  <div id="post_wrap_v1" class="post_body">
+    {{ project.body|markdown }}
+  </div>
+  {% if tags %}
+  <div class="tag_box">
+    {% for tag in tags %}
+    <a href= "{% url 'tagged_object_list' tag.name %}" class="tag">{{tag.name}}</a>
+    {% endfor %}
+  </div>
+  {% endif%}
+  <footer class="share_container">
+    <ul>
+      <li>
+        <div class="btn_like project-like" data-post-id="{{project.id}}">
+          {% if liked %}
+          <span class="show_like icon-heart"></span>
+          <span class="show_unlike icon-heart" style="display: none"></span>
+          {% else %}
+          <span class="show_like icon-heart" style="display: none"></span>
+          <span class="show_unlike icon-heart "></span>
+          {% endif %}
+        </div>
+        <span class="like_count">{{ project.likes }}</span>
+      </li>
+      <!-- <li><span class="icon-bubble"></span><a href="{% url 'project_detail' slug=project.slug %}#disqus_thread"></a></li> -->
+    </ul>
+    <ul>
+      <a class="facebook btn_share"
+        href = "http://www.facebook.com/share.php?u=http:/www.sunnyruan.pythonanywhere.com/project/{{ project.slug }}"
+        target="_blank">
+        <li class="icon-social-facebook"></li>
+      </a>
+      <a class="twitter btn_share"
+        href="http://twitter.com/share?url=http://www.sunnyruan.pythonanywhere.com/project/{{ project.slug }}
+        &amp;text={{ project.title }} http://www.sujinlee.me/project/{{ project.slug }} via @sunnyjqr &amp;hashtags={{ project.category.title }}"
+        target="_blank" title="Twitter Share">
+        <li class="icon-social-twitter"></li>
+      </a>
+      <a class="google_plus btn_share"
+        href="https://plus.google.com/share?url=http://www.sunnyruan.pythonanywhere.com/project/{{ project.slug }}"
+        target="_blank" title="Google Plus Share">
+        <li class="icon-social-google"></li>
+      </a>
+    </ul>
+  </footer>
+</article>
+<nav id="pagination">
+  {% if previous %}
+  <div class="pagination_col" onclick="location.href='{% url 'project_detail' slug=previous.slug %}';">
+    <div class="previous_page">
+      <button class="btn_blog material-icons">keyboard_arrow_left</button>
+      <h2 class="title-left">{{ previous.title|truncatechars:46 }}</h2>
+    </div>
+  </div>
+  {% endif %}
+  {% if next %}
+  <div class="pagination_col" onclick="location.href='{% url 'project_detail' slug=next.slug %}';">
+    <div class="next_page">
+      <h2 class="title-left">{{ next.title|truncatechars:46 }}</h2>
+      <button class="btn_blog material-icons">keyboard_arrow_right</button>
+    </div>
+    </a>
+  </div>
+  {% endif %}
+</nav>
+<button class="btn_expand material-icons">keyboard_arrow_left</button>
+<button class="btn_gototop material-icons">keyboard_arrow_up</button>
+{% endblock %}
+
+{% block jsblock %}
+<script src="{% static 'src/js/highlight.pack.js' %}"></script>
+<script src="{% static 'src/js/post_detail.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();
+        window.onload = loadPreImage();
+</script>
+{% endblock %}

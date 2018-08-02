@@ -20,12 +20,63 @@
 </header>
 <div id="main_content">
   <div id="post_wrap_v2" class="post_body">
-    <p class="quote" >
-      Click <a href="https://drive.google.com/open?id=1ReS2D3kafigQRV6Da-Lxtug8Ed0B8DeV">here</a> for a pdf version of my resume.
+    <p class="other-version" >
+      Click <a href="https://drive.google.com/open?id=1ReS2D3kafigQRV6Da-Lxtug8Ed0B8DeV">here</a> for a PDF version of my resume.
     </p>
-  {% for about in abouts %}
+  <!--{% for about in abouts %}
     <p>{{ about.body|markdown }}</p>
   </div>
-{% endfor %}
+  {% endfor %} -->
+  <!-- Education -->
+  <h2 class="resume-title">Education</h2>
+  <div class="resume-section">
+    <p><strong>Rensselaer Polytechnic Institute -- Degree Expected: June 2020</strong></p>
+      <ul class="resume-list">
+        <li>B.S., Math and Computer Science (dual major) -- GPA: 3.66/4.0</li>
+        <li>Awards: Dean's List, Rensselaer Leardership Award</li>
+      </ul>
+  </div>
+  
+  <!-- Programming Languages -->
+  <h2 class="resume-title">Programming Languages</h2>
+  <div class="resume-section">
+    <ul class="resume-list">
+      <li class="resume-list-item resume-programming-item"><label>C++</label><progress value="80" max="100">80%</progress> 80%</li>
+      <li class="resume-list-item resume-programming-item"><label>Python3</label><progress value="75" max="100">75%</progress> 75%</li>
+      <li class="resume-list-item resume-programming-item"><label>MySQL</label><progress value="60" max="100">60%</progress> 60%</li>
+      <li class="resume-list-item resume-programming-item"><label>JavaScript</label><progress value="55" max="100">55%</progress> 55%</li>
+      <li class="resume-list-item resume-programming-item"><label>Java</label><progress value="55" max="100">55%</progress> 55%</li>
+    </ul>
+  </div>
+
+  <!-- Technical Skills -->
+  <h2 class="resume-title">Technical Skills</h2>
+  <div class="resume-section">
+    <h3>Machine Learning</h3>
+    <ul class="resume-list">
+      <li>Linear Regression</li>
+      <li>Logistic Regression</li>
+      <li>K-Means Clustering</li>
+      <li>Support Vector Machine</li>
+      <li>K Nearest Neighbor</li>
+      <li>Neural Network</li>
+    </ul>
+    <h3>Statistical Programming</h3>
+    <p>NumPy, Matplotlib, Pandas, Scikit-Learn</p>
+    <h3>Tools</h3>
+    <p>Visual Studio, Jupyter Notebook, MS SQL Server, Android Studio, MatLab</p>
+    <h3>Operating Systems</h3>
+    <p>Windows, Linux</p>
+    <h3>Others</h3>
+    <p>Maple, MS Office, Adobe Photoshop, Adobe After Effects</p>
+  </div>
+
+  <!-- Languages -->
+  <h2 class="resume-title">Spoken Languages</h2>
+  <div class="resume-section">
+    <p>Native: Cantonese, Mandarin</p>
+    <p>Proficient: English</p>
+  </div>
+
 </div>
-{% endblock content %}
+{% endblock %}

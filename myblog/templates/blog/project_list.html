@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+<title>Project - Sunny Ruan</title>
+{% endblock %}
+
+{% block ogtags %}
+<meta property="og:type"   content="website" /> 
+<meta property="og:title" content="Project - Sunny Ruan" />
+<meta property="og:description" content="Creative Technologist" />
+<meta property="og:image" content="https://www.sunnyruan.pythonanywhere.com/image/profile2.jpg" />
+<meta property="og:url" content="https://www.sunnyruan.pythonanywhere.com/" />
+{% endblock %}
+
+{% block content %}
+<header class="page_title">
+  <h1> PROJECT</h1>
+</header>
+<div id="main_content">
+  {% if projects %}
+  <ul id="lst_project_wrap">
+    {% for project in projects %}
+    <li class="project_ele" onclick="location.href='{% url 'project_detail' slug=project.slug %}';">
+       <div class="placeholder" data-large="{{ project.image.url }}">
+        <img src="{{ project.image_thumbnail.url }}" class="img-small">
+        <div class="img_area"></div>
+      </div>
+      <header>
+        <span class="date">{{ project.published_date }}</span>
+        <h3>{{ project.summary|truncatechars:30 }}</h3>
+        <div class="detail">
+          <h2>{{ project.title|truncatechars:48 }}</h2>
+          <button class="btn_read material-icons">arrow_forward</button>
+        </div>
+      </header>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div id="main_content">
+    <h3>No Post in here. Write new post!</h3>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
+
+{% block jsblock %}
+<script>window.onload = loadPreImage();</script>
+{% endblock %}

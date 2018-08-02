@@ -1,7 +1,3 @@
-/*
-UPDATE : 2017.02.
-AUTHOR : SUJIN LEE (sujinlee.me@gmail.com)
-*/
 /* Valuables ----------- */
 /* main color */
 /* layout */
@@ -17,17 +13,7 @@ button .material-icons {
 
 mark {
   background: transparent;
-  color: #ff171f; }
-
-.icon-social-facebook, .icon-social-linkedin,
-.icon-social-github, .icon-social-twitter,
-.icon-social-instagram {
-  font-size: 1.6rem;
-}
-
-.copyright {
-  font-size: 13px;
-}
+  color: #c63333; }
 
 /* animation on external link */
 a,
@@ -78,7 +64,7 @@ main {
   transition: transform 2s; }
 
 #snb_left_box {
-  background: #af4448;
+  background: #ffa260;
   width: 20vw;
   transition: transform 2s;
   overflow: hidden; }
@@ -163,8 +149,8 @@ main {
   padding: 6%;
   position: fixed;
   margin-top: 3rem;
-  right: 0;
-  background-color: #af4448;
+  right: 0;  
+  background: linear-gradient(#ffd1d1, #ffa260);
   width: 30vw;
   display: table;
   margin: 0 auto; }
@@ -177,7 +163,7 @@ main {
     padding: 2%;
     display: inline-flex; }
   .gnb a {
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-size: 1.2rem;
     display: block;
     font-weight: 600; }
@@ -192,7 +178,7 @@ main {
 
 .snb_left {
   height: 100%;
-  background: #af4448;
+  background: linear-gradient(#ffa260, #c63333);
   color: #fff;
   transition: width 2s;
   display: flex;
@@ -259,7 +245,7 @@ main {
   top: 46%;
   right: 42%;
   width: 5vw;
-  border-bottom: 4px solid #af4448; }
+  border-bottom: 4px solid #d63535; }
 
 /* ------------------------------------------------ */
 /* post_detail.html ------------------------------- */
@@ -291,7 +277,7 @@ article {
   padding: 3rem 0 0 0;
   position: relative; }
   .disqus a {
-    color: #af4448; }
+    color: #c63333; }
 
 /* image */
 img {
@@ -333,11 +319,11 @@ button,
   position: absolute;
   color: #fff;
   z-index: 2;
-  background: #af4448;
+  background: #1f00ff;
   border-radius: 50%; }
   .btn_write:hover {
     color: #fff;
-    background: #ff00db; }
+    background: #f40000; }
 
 .btn_back {
   margin-right: 0.1rem; }
@@ -391,7 +377,7 @@ footer ul:nth-child(2) {
     margin-left: 1rem; }
     .share_container ul:nth-child(2) li:hover,
     footer ul:nth-child(2) li:hover {
-      color: #af4448; }
+      color: #1f00ff; }
 
 .share_container li,
 .share_container a,
@@ -420,7 +406,7 @@ footer .icon-bubble,
 footer .icon-social-twitter,
 footer .icon-social-google,
 footer .icon-social-facebook {
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important;
   vertical-align: top; }
 
 .btn_like {
@@ -431,11 +417,11 @@ span.like_count {
   width: auto; }
 
 span.show_like.icon-heart {
-  color: #ff00db;
+  color: #f40000;
   vertical-align: top; }
 
 span.show_unlike.icon-heart {
-  color: #af4448;
+  color: #1f00ff;
   vertical-align: top; }
 
 .share_container {
@@ -551,7 +537,7 @@ span.show_unlike.icon-heart {
   display: inline-flex;
   vertical-align: middle; }
   .blog_ele footer .icon-heart {
-    color: #af4448; }
+    color: #1f00ff; }
   .blog_ele footer .icon-bubble {
     padding-left: 0.5rem; }
   .blog_ele footer data,
@@ -649,7 +635,7 @@ span.show_unlike.icon-heart {
   .pagination_col a {
     display: block; }
   .pagination_col a:active {
-    color: #ff00db; }
+    color: #f40000; }
   .pagination_col a:visited {
     color: #232528; }
 
