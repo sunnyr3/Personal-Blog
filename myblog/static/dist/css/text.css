@@ -80,7 +80,6 @@ body {
 h1,
 h2 {
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.04rem; }
 
 h3 {
@@ -112,7 +111,7 @@ strong {
 .resume-programming-item label {
   display: block;
   float: left;
-  width: 80px;
+  width: 100px;
 }
 
 .resume-list {
